@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: app-gateway
+  main:
+    web-application-type: reactive
+
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: http://order-service:8080
+          predicates:
+            - Path=/api/orders/**
+
+        - id: payment-service
+          uri: http://payment-service:8081
+          predicates:
+            - Path=/api/payments/**
+
+        - id: invoice-service
+          uri: http://invoice-service:8082
+          predicates:
+            - Path=/api/invoices/**

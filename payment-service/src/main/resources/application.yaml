@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: payment-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: payment-service
+  endpoint:
+    health:
+      show-details: always
